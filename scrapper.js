@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 
-(async () => {
+const getCovid19MyCases = async () => {
   const browser = await puppeteer.launch({
     headless: true,
   });
@@ -13,7 +13,7 @@ const puppeteer = require('puppeteer');
     const dataInTreatment = document.querySelector('.legend-treatment').textContent;
     const dataDischarged = document.querySelector('.legend-discharged').textContent;
     const dataDeaths = document.querySelector('.legend-dead').textContent;
-    
+
     return {
       dataConfirmed,
       dataInTreatment,
@@ -21,7 +21,11 @@ const puppeteer = require('puppeteer');
       dataDeaths
     }
   })
-  console.log("data", data)
+  // console.log("data", data)
 
   await browser.close();
-})();
+
+  return data;
+};
+
+module.exports = { getCovid19MyCases }
