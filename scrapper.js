@@ -1,28 +1,27 @@
-const axios = require("axios");
-const cheerio = require("cheerio")
+const puppeteer = require('puppeteer');
 
-const fetchHtml = async url => {
-  try {
-    const { data } = await axios.get(url)
-    console.log(data)
-    return data
-  } catch {
-    console.error(`ERROR: An error occured when trying to fetch the URL: ${url}`)
-  }
-}
+(async () => {
+  const browser = await puppeteer.launch({
+    headless: true,
+  });
+  const page = await browser.newPage();
+  await page.goto('https://newslab.malaysiakini.com/covid-19/en');
 
-const scrapper = async () => {
-  const url = "https://newslab.malaysiakini.com/covid-19/en";
+  await page.waitForSelector('.legend-total');
+  const data = await page.evaluate(() => {
+    const dataConfirmed = document.querySelector('.legend-total').textContent;
+    const dataInTreatment = document.querySelector('.legend-treatment').textContent;
+    const dataDischarged = document.querySelector('.legend-discharged').textContent;
+    const dataDeaths = document.querySelector('.legend-dead').textContent;
+    
+    return {
+      dataConfirmed,
+      dataInTreatment,
+      dataDischarged,
+      dataDeaths
+    }
+  })
+  console.log("data", data)
 
-  const html = await fetchHtml(url)
-  // console.log("scrapSteam -> html", html)
-
-  const $ = cheerio.load(html)
-  // console.log("scrapSteam -> selector", selector)
-
-  const result = $("body").find('#confirm-case-count')
-
-  // console.log(result.text())
-}
-
-scrapper()
+  await browser.close();
+})();
