@@ -1,6 +1,6 @@
 const express = require("express");
 // const router = express.Router()
-const { getCovid19MyCases } = require("./scrapper")
+const { outbreakMyScrapper } = require("./scrapper")
 
 const app = express();
 const port = 9000
@@ -13,7 +13,7 @@ app.use(function (req, res, next) {
 });
 
 app.get('/', async (req, res) => {
-  res.send(await getCovid19MyCases())
+  res.send(await outbreakMyScrapper())
 })
 
 app.listen(port, () => {

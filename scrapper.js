@@ -28,4 +28,65 @@ const getCovid19MyCases = async () => {
   return data;
 };
 
-module.exports = { getCovid19MyCases }
+
+const outbreakMyScrapper = async (req, res) => {
+  const browser = await puppeteer.launch({
+    headless: true,
+    args: ['--no-sandbox']
+  });
+  const page = await browser.newPage();
+  await page.goto('https://www.outbreak.my/');
+
+  await page.waitFor(() => {
+    const count = document.querySelector('#cases-my-confirmed');
+    return count && count.innerText !== '-';
+  });
+  // await page.waitFor(async() => {
+  //   const count = document.querySelector('#cases-my-confirmed');
+  //   let firstCount = count.innerText;
+  //   let secondCount = count.innerText;
+  //   return firstCount == secondCount;
+  // });
+  await page.waitFor(5000)
+
+  let data = await page.evaluate(() => {
+    const dataConfirmed = document.querySelector('#cases-my-confirmed').textContent;
+    const dataConfirmedChanges = document.querySelector('#cases-my-confirmed-changes').textContent;
+    const dataInTreatment = document.querySelector('#cases-my-active').textContent;
+    const dataInTreatmentChanges = document.querySelector('#cases-my-active-changes').textContent;
+    const dataRecovered = document.querySelector('#cases-my-recovered').textContent;
+    const dataRecoveredChanges = document.querySelector('#cases-my-recovered-changes').textContent;
+    const dataDeaths = document.querySelector('#cases-my-death').textContent;
+    const dataDeathsChanges = document.querySelector('#cases-my-death-changes').textContent;
+
+    return {
+      dataConfirmed,
+      dataConfirmedChanges,
+      dataInTreatment,
+      dataInTreatmentChanges,
+      dataRecovered,
+      dataRecoveredChanges,
+      dataDeaths,
+      dataDeathsChanges
+    }
+  })
+  data.updatedTime = new Date();
+  // console.log("data", data)
+
+  await browser.close();
+
+  let colRef = db.collection('outbreakmy');
+
+  colRef.add(data)
+    .then(docRef => {
+      console.log("Document written with ID: ", docRef.id)
+    })
+    .catch(function (error) {
+      console.error("Error adding document: ", error);
+    });
+
+  // res.set('Cache-Control', 'public, max-age=3000, s-maxage=6000');
+  res.status(200).send(data)
+}
+
+module.exports = { getCovid19MyCases, outbreakMyScrapper }
