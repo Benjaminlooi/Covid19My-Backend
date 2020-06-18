@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer');
+const { db } = require('./plugins/firebase')
 
 const getCovid19MyCases = async () => {
   const browser = await puppeteer.launch({

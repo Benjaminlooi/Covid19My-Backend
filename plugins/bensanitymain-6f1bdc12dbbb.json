@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "bensanitymain",
+  "private_key_id": "6f1bdc12dbbbc3471716c686bb66aa32eee637c8",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQD0kfU/5i3QJHp9\nsCZjZrWABU5rOd4UvbX1YJsbWAdUcKF3AzYG8uWz9r2LODUK+WrRS+VzGBsW6UnA\nqkiLLqDVUUNji69coqYy3SCc6Ir1OfmBuUmeirzGQU38ztKcLTXlNbFkWnDdU4OW\nfYMtQ1OlS+2nOwgpENsfx5fuFq+YCnFn54js0FaRJzOFuBnFsK7Fp38IQ9Q+9rn2\ndB3nyOQ9udxdgX+peC/++i7H1BM9ZK3qGhGu+cO5id17+unCQEixMf2FXAphTFqV\nE0NGWJY4wzvIiFJ+aRnTDuM24DhdkHcyHYBUBYQYo8+YPZBenAXakJ5Idf2uZ3Oo\naxXl1QjxAgMBAAECggEAI0tDpZK1087KhS7m1ftxf+XEI6yN2a0TADPjzmC4FhMh\nn1zYRCJzdwge4bjHzCtNo0yc8oIXuV5gkAGYRyBV132gXaeVM/zI7ULaElVrZZOV\n59xHEoPFAFCroisasQJulQMC9DoqWtZS1rngNKeoVOIN4Xn0Zdtn3pXdiAoVZw76\nhlMaTXw7Xr1A3LQsyfaDblktEqGPEDsTdmf3NJv857HJEZMO+uyLrtVyBOGkzdB+\n1kLhkEvlbFv+FgejJ/kZekwGJIRoM5DnaEAToo+y0ljnqXo8FPvztHPjMQUbJhVO\n4JPqY0oEhcR0/tia1dSqtTTDFtAFWIl0rHpoUzgMPQKBgQD8iPHiU5Cp8Bzx31G2\nJFE8O++vu7vZQIXL/FRuEjo+mnNlixw4e+dNOvuycV8+6cmyloeIkywC3sEmKr6e\nXODbo7Jnfz3cBM+nzEPhytHFC92mrbZQts+TuPIehi7L3JXnorRyhT8CZDMi29zu\n3cw7NHHu/U2f9HQGFX0s3kOQ7wKBgQD37Qk2hXBD6a7Ett/UdHxmRViLzj3uQnWO\nuIR2Y6+cZe31T1Hoz3jw901wHwe+siVRT1uAiEMAW7TmN23ed4dI8Twe5q1VUBZN\nCBvntFVTkdTq1jb90mPPsqtof8g80qz1OwuI89ar3VKHBZ2//zuPznl7F0iOACS/\nzJvom0lEHwKBgQCRc4L2G7F/37ecLEcRBJvxeIgWDKgmen5VvjEW8NKxSh5bByOq\n+NqBZg6geaIlR1yPyxmnNTUtNgXDqOz/o3kzqHZSHDyR5AeCmykh/MKTnsD8hqMy\nnAi1CdoScLC1ZIjG0LTkHRDsnK/DTSVUQ1WlaBCTWTwDfDXzZx8g36fE6wKBgDZd\niQ6mliaeQI+sVkq9PGYkwLTvhc8QTbz9IzbexyxxgYuwWBLIJAobAKUceNNNNzes\nQjFeL+sNMQ7mirYk2cqZ84gHJ200wZ8krxHRDoDj0p+oV6izEOYDlOi2VI9Z10lz\nKCVg6usG/kjTZ3MpocL4ENV4FpXk3Coe0PVhz+AbAoGBAJT1G/Tja5IKluQFEg7R\nc46Ws46syVDjUZbl9f5bscuZ0MZkM7wuRGrl2qbKzO9TlhTjmcA4027LxBDTJMVo\n0nrkV8abcCnoEC5MghKMBnXAyBKADdFVpipWnkTO7e0MOdiTWNG/owmXOZRvOpUV\ntYNZpHJqTEW2OxtQlZ0mJBSX\n-----END PRIVATE KEY-----\n",
+  "client_email": "covid19malaysia-api@bensanitymain.iam.gserviceaccount.com",
+  "client_id": "115388024874295518132",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/covid19malaysia-api%40bensanitymain.iam.gserviceaccount.com"
+}

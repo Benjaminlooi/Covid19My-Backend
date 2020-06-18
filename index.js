@@ -12,8 +12,8 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.get('/', async (req, res) => {
-  res.send(await outbreakMyScrapper())
+app.get('/outbreak-scrapper', async (req, res) => {
+  res.send(await outbreakMyScrapper(req, res))
 })
 
 app.listen(port, () => {
