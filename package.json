@@ -13,5 +13,8 @@
     "express": "^4.17.1",
     "firebase-admin": "^8.12.1",
     "puppeteer": "^2.1.1"
+  },
+  "engines": {
+    "node": "12.x"
   }
 }
