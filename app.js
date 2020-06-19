@@ -14,6 +14,9 @@ app.use(function (req, res, next) {
 app.get('/outbreak-scrapper', async (req, res) => {
   res.send(await outbreakMyScrapper(req, res))
 })
+app.get('/', async (req, res) => {
+  res.send('/outbreak-scrapper')
+})
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}!`)
