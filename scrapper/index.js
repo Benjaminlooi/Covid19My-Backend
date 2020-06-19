@@ -1,5 +1,5 @@
 const puppeteer = require('puppeteer');
-const { db } = require('./plugins/firebase')
+const { db } = require('../plugins/firebase')
 
 const getCovid19MyCases = async () => {
   const browser = await puppeteer.launch({
@@ -31,6 +31,7 @@ const getCovid19MyCases = async () => {
 
 
 const outbreakMyScrapper = async (req, res) => {
+  console.log('Running outbreakMyScrapper...');
   const browser = await puppeteer.launch({
     headless: true,
     args: ['--no-sandbox']
@@ -60,6 +61,8 @@ const outbreakMyScrapper = async (req, res) => {
     const dataDeaths = document.querySelector('#cases-my-death').textContent;
     const dataDeathsChanges = document.querySelector('#cases-my-death-changes').textContent;
 
+    // const malaysiaMapImgSrc = document.querySelector('#cases-my-death').textContent;
+
     return {
       dataConfirmed,
       dataConfirmedChanges,
@@ -73,6 +76,13 @@ const outbreakMyScrapper = async (req, res) => {
   })
   data.updatedTime = new Date();
   // console.log("data", data)
+
+  // page.$x('/html/body/div[1]/div[1]/div[3]/div/div[4]/div[1]/div/div[2]/div/div[2]/div[1]/div/div/a/img')
+  const [elementHandle] = await page.$x('/html/body/div[1]/div[1]/div[3]/div/div[4]/div[1]/div/div[2]/div/div[2]/div[1]/div/div/a/img');
+  const propertyHandle = await elementHandle.getProperty('src');
+  const propertyValue = await propertyHandle.jsonValue();
+  data.malaysiaMapSrc = propertyValue;
+  console.log("outbreakMyScrapper -> data", data)
 
   await browser.close();
 
@@ -88,6 +98,8 @@ const outbreakMyScrapper = async (req, res) => {
 
   // res.set('Cache-Control', 'public, max-age=3000, s-maxage=6000');
   res.status(200).send(data)
+  console.log('outbreakMyScrapper ended...');
 }
 
 module.exports = { getCovid19MyCases, outbreakMyScrapper }
+

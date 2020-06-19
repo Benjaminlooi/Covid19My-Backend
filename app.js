@@ -1,5 +1,4 @@
 const express = require("express");
-// const router = express.Router()
 const { outbreakMyScrapper } = require("./scrapper")
 
 const app = express();
@@ -12,7 +11,6 @@ app.use(function (req, res, next) {
   next();
 });
 
-//
 app.get('/outbreak-scrapper', async (req, res) => {
   res.send(await outbreakMyScrapper(req, res))
 })
