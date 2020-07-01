@@ -1,5 +1,5 @@
 const express = require("express");
-const { outbreakMyScrapper } = require("./scrapper")
+const apiRouter = require("./routes")
 
 const app = express();
 const port = process.env.PORT || 9000
@@ -11,11 +11,10 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.get('/outbreak-scrapper', async (req, res) => {
-  res.send(await outbreakMyScrapper(req, res))
-})
+app.use('/api', apiRouter)
+
 app.get('/', async (req, res) => {
-  res.send('/outbreak-scrapper')
+  res.send('/api/outbreak-scrapper')
 })
 
 app.listen(port, () => {
